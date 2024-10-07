@@ -1,7 +1,6 @@
-li {
-    marker: none;
+body {
+    background: red;
 }
-
 img {
     width: 150px;
     height: 150px;

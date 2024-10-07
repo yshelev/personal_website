@@ -46,7 +46,7 @@ a {
     transition: 750ms ease-in-out;
     position: relative;
     left: 21%;
-    top: 85.3%;
+    top: 84.5%;
     width: 157px;
     height: 157px;
     object-fit: contain;
@@ -157,4 +157,36 @@ a {
     transform: rotate(10deg);
     color: snow;
     padding-right: 10%;
+}
+
+.white_icons_container {
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 40em;
+    top: 5em;
+    color: black;
+    transform: rotate(5deg);
+    height: fit-content;
+    width: 12em;
+    filter: invert(100%);
+    /*opacity: 0;*/
+}
+
+.black_icons_container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: black;
+    top: 5em;
+    height: fit-content;
+    transform: rotate(-9deg);
+    width: 12em;
+}
+
+.icon_container {
+    height: 3em;
+    width: 3em;
+    object-fit: contain;
+    margin-left: 3em;
 }
