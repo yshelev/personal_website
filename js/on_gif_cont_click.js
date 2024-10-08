@@ -6,6 +6,7 @@ let is_playing = false;
 let current_audio_index = 0;
 
 let audios = [
+    new Audio(AUDIO_PATH + "zxcursed.mp3"),
     new Audio(AUDIO_PATH + "cupsize_bus.mp3"),
     new Audio(AUDIO_PATH + "cupsize_love_me_alina.mp3")
 ]
