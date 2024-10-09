@@ -36,6 +36,7 @@ function endMiniGame() {
     is_playing_in_minigame = false
     index_of_current_zxc_string = 0
     streak = 0
+    keys = []
 }
 
 doc.addEventListener("keydown", (event) => {
@@ -43,7 +44,6 @@ doc.addEventListener("keydown", (event) => {
     if (keys.toString().indexOf(zxc_permutations[index_of_current_zxc_string]) >= 0 ) {
         if (is_playing_in_minigame) {
             if ((Date.now() - interval_start) / 1000 >= 3) {
-                console.log("zxc_permutations[index_of_current_zxc_string]")
                 endMiniGame()
             }
         }
