@@ -15,14 +15,51 @@ let links = [
     "https://youtu.be/ZPcPHLFFsds?si=47-DK1HUVYxgRtAX"
 ]
 
+let zxc_permutations = [
+    "KeyZ,KeyX,KeyC",
+    "KeyZ,KeyC,KeyX",
+    "KeyX,KeyZ,KeyC",
+    "KeyX,KeyC,KeyZ",
+    "KeyC,KeyX,KeyZ",
+    "KeyC,KeyZ,KeyX",
+]
+
+let index_of_current_zxc_string = 0;
+let streak = 0;
+let is_playing_in_minigame = false
+let interval_start = null
+
 let hidden_link = "https://youtu.be/8Ze_-hh66-A?si=BVphApa622gryU7A"
+
+function endMiniGame() {
+    window.open(links[Math.min(streak - 1, zxc_permutations.length - 1)], "blank_")
+    is_playing_in_minigame = false
+    index_of_current_zxc_string = 0
+    streak = 0
+}
 
 doc.addEventListener("keydown", (event) => {
     keys.push(event.code)
-    console.log(keys.toString())
-    if (keys.toString().indexOf(string_zxc) >= 0 ) {
-        window.open(links[getRandomInt(links.length)], "blank_")
+    if (keys.toString().indexOf(zxc_permutations[index_of_current_zxc_string]) >= 0 ) {
+        if (is_playing_in_minigame) {
+            if ((Date.now() - interval_start) / 1000 >= 3) {
+                console.log("zxc_permutations[index_of_current_zxc_string]")
+                endMiniGame()
+            }
+        }
+
+        interval_start = Date.now()
+        streak += 1
+        if (streak === 1) {
+            is_playing_in_minigame = true
+        }
+        index_of_current_zxc_string = getRandomInt(zxc_permutations.length)
+        console.log(zxc_permutations[index_of_current_zxc_string])
         keys = []
+    }
+
+    else if (keys.length >= 3 && is_playing_in_minigame) {
+        endMiniGame()
     }
 
     if (keys.toString().indexOf(string_xyz) >= 0 ) {
