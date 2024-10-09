@@ -6,6 +6,27 @@ body {
 a {
     color: red;
 }
+
+
+/*Animations*/
+@keyframes fadeout__intro {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes show__cursed {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 /*Backgrounds*/
 .intro {
     background: linear-gradient(90deg, rgba(0, 0, 0, 100) 50%, rgba(255,255,255,100) 50%) center no-repeat;
@@ -16,6 +37,30 @@ a {
 
 .intro.anim__space {
     filter: invert(100%);
+}
+
+.intro.anim__cursed {
+    animation-name: fadeout__intro;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+.container_cursed {
+    font-size: 100pt;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    opacity: 0;
+}
+
+.container_cursed.anim__show {
+    left: 0;
+    top: 0;
+    width: 100vh;
+    height: 100vh;
+    animation-name: show__cursed;
+    animation-duration: 5s;
+    opacity: 1;
 }
 
 .container_black_content {
