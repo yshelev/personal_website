@@ -3,7 +3,6 @@ function getRandomInt(max) {
 }
 
 let keys = []
-let string_zxc = "KeyZ,KeyX,KeyC"
 let string_xyz = "KeyX,KeyY,KeyZ"
 
 let links = [
