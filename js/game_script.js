@@ -28,7 +28,7 @@ let streak = 0;
 let is_playing_in_minigame = false
 let interval_start = null
 
-let hidden_link = "https://youtu.be/8Ze_-hh66-A?si=BVphApa622gryU7A"
+let hidden_link = "https://mesenev.ru/"
 
 function endMiniGame() {
     window.open(links[Math.min(streak - 1, zxc_permutations.length - 1)], "blank_")
