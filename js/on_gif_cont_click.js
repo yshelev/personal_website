@@ -1,7 +1,7 @@
 const AUDIO_PATH = "../audio/"
 
 let button_play = document.querySelector(".gif_container")
-let cursed_container = document.querySelector(".container_cursed")
+let cursed_container = document.querySelector(".vertical_container_cursed")
 let is_playing = false;
 
 let current_audio_index = 0;
@@ -15,19 +15,24 @@ let audios = [
 audios[0].loop = false
 
 audios.forEach((audio) => audio.volume = .1)
+audios[0].volume = 1;
+
+let first_time_played = true
 
 button_play.addEventListener("click", () => {
-    if (current_audio_index === 0 && audios[current_audio_index].currentTime < 0.001) {
+    if (first_time_played) {
+        first_time_played = false
         intro_container.classList.add("anim__cursed")
 
         setTimeout(() => {
             cursed_container.classList.add("anim__show")
-        }, 10000)
+        }, 17000)
 
         setTimeout(() => {
             intro_container.classList.remove("anim__cursed")
             cursed_container.classList.remove("anim__show")
-        }, 33000)
+            audios.splice(0, 1)
+        }, 31500)
     }
 
 

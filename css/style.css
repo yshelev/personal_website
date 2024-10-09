@@ -23,7 +23,7 @@ a {
         opacity: 0;
     }
     to {
-        opacity: 0;
+        opacity: .95;
     }
 }
 
@@ -41,26 +41,46 @@ a {
 
 .intro.anim__cursed {
     animation-name: fadeout__intro;
-    animation-duration: 10s;
+    animation-duration: 22s;
     opacity: 0;
 }
 
-.container_cursed {
-    font-size: 100pt;
+.vertical_container_cursed {
+    background-image: url("../resources/dota_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: -200%;
     display: flex;
     justify-content: space-between;
     color: black;
-    opacity: 0;
 }
 
-.container_cursed.anim__show {
+.horizontal_container_cursed {
+    font-size: 100px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+
+.vertical_container_cursed.anim__show {
+    position: absolute;
     left: 0;
     top: 0;
-    width: 100vh;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     animation-name: show__cursed;
     animation-duration: 5s;
-    opacity: 1;
+
+}
+
+.container_akashi_gif {
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
+    opacity: .5;
 }
 
 .container_black_content {
