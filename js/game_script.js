@@ -9,9 +9,9 @@ let links = [
     "https://www.youtube.com/watch?v=6FORO4Y4Two",
     "https://www.youtube.com/watch?v=m9vWjfe-nAA",
     "https://www.youtube.com/watch?v=19iN2eeM9sg",
-    "https://youtu.be/Jh43Z-pvdrE?si=Zhtko9xe-n7wJkrZ",
-    "https://youtu.be/katc6Z-fvow?si=IeDsttt-DZWNqpaS",
-    "https://youtu.be/ZPcPHLFFsds?si=47-DK1HUVYxgRtAX"
+    "https://www.youtube.com/watch?v=Jh43Z-pvdrE",
+    "https://www.youtube.com/watch?v=katc6Z-fvow",
+    "https://www.youtube.com/watch?v=ZPcPHLFFsds"
 ]
 
 let hidden_link = "https://mesenev.ru/"
