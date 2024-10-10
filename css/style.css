@@ -305,6 +305,7 @@ a {
 }
 
 .container_streak {
+    text-align: left;
     font-family: "Microsoft JhengHei", serif;
     font-size: 20px;
     color: darkorange;
