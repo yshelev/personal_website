@@ -20,11 +20,20 @@ audios[0].volume = 1;
 let first_time_played = true
 
 button_play.addEventListener("click", () => {
+    if (is_playing) {
+        audios[current_audio_index].pause()
+        is_playing = false
+    }
+    else {
+        audios[current_audio_index].play()
+        is_playing = true
+    }
     if (first_time_played) {
         first_time_played = false
         button_play.classList.add("block_hover")
         intro_container.classList.add("anim__cursed")
-        audios[current_audio_index].play()
+        is_playing = false
+
 
         setTimeout(() => {
             cursed_container.classList.add("anim__show")
@@ -37,18 +46,6 @@ button_play.addEventListener("click", () => {
             audios.splice(0, 1)
         }, 31500)
     }
-    else {
-        if (is_playing) {
-            audios[current_audio_index].pause()
-            is_playing = false
-        }
-        else {
-            audios[current_audio_index].play()
-            is_playing = true
-        }
-    }
-
-
 
 })
 
