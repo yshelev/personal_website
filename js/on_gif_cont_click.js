@@ -24,6 +24,7 @@ button_play.addEventListener("click", () => {
         first_time_played = false
         button_play.classList.add("block_hover")
         intro_container.classList.add("anim__cursed")
+        audios[current_audio_index].play()
 
         setTimeout(() => {
             cursed_container.classList.add("anim__show")
@@ -46,6 +47,9 @@ button_play.addEventListener("click", () => {
             is_playing = true
         }
     }
+
+
+
 })
 
 button_play.addEventListener("dblclick", () => {
