@@ -5,6 +5,8 @@ function getRandomInt(max) {
 let keys = []
 let string_xyz = "KeyX,KeyY,KeyZ"
 
+let coils_container = document.querySelector(".container_coils")
+
 let links = [
     "https://www.youtube.com/watch?v=6FORO4Y4Two",
     "https://www.youtube.com/watch?v=m9vWjfe-nAA",
@@ -23,6 +25,12 @@ let zxc_permutations = [
     "KeyC,KeyZ,KeyX",
 ]
 
+let coils = [];
+let dict_button_resource = {
+    "KeyZ": "resources/z.png",
+    "KeyX": "resources/x.png",
+    "KeyC": "resources/c.png"
+}
 let index_of_current_zxc_string = 0;
 let streak = 0;
 let is_playing_in_minigame = false
@@ -31,18 +39,23 @@ let interval_start = null
 let hidden_link = "https://mesenev.ru/"
 
 function endMiniGame() {
+    coils_container.classList.remove("on_game_started")
     window.open(links[Math.min(streak - 1, zxc_permutations.length - 1)], "blank_")
     is_playing_in_minigame = false
     index_of_current_zxc_string = 0
     streak = 0
     keys = []
+    coils_container.innerHTML = `
+    <img class="coil_icon_container" src=${dict_button_resource[coils[0]]} alt=""/>
+    <img class="coil_icon_container" src=${dict_button_resource[coils[1]]} alt=""/>
+    <img class="coil_icon_container" src=${dict_button_resource[coils[2]]} alt=""/>`
 }
 
 doc.addEventListener("keydown", (event) => {
     keys.push(event.code)
     if (keys.toString().indexOf(zxc_permutations[index_of_current_zxc_string]) >= 0 ) {
         if (is_playing_in_minigame) {
-            if ((Date.now() - interval_start) / 1000 >= 3) {
+            if ((Date.now() - interval_start) / 1000 >= 10) {
                 endMiniGame()
             }
         }
@@ -50,18 +63,23 @@ doc.addEventListener("keydown", (event) => {
         interval_start = Date.now()
         streak += 1
         if (streak === 1) {
+            coils_container.classList.add("on_game_started")
             is_playing_in_minigame = true
         }
         index_of_current_zxc_string = getRandomInt(zxc_permutations.length)
-        console.log(zxc_permutations[index_of_current_zxc_string])
-        keys = []
-    }
+        coils = zxc_permutations[index_of_current_zxc_string].split(",")
 
-    else if (keys.length >= 3 && is_playing_in_minigame) {
+        coils_container.innerHTML = `
+        <img class="coil_icon_container" src=${dict_button_resource[coils[0]]} alt=""/>
+        <img class="coil_icon_container" src=${dict_button_resource[coils[1]]} alt=""/>
+        <img class="coil_icon_container" src=${dict_button_resource[coils[2]]} alt=""/>`
+        keys = []
+
+    } else if (keys.length >= 3 && is_playing_in_minigame) {
         endMiniGame()
     }
 
-    if (keys.toString().indexOf(string_xyz) >= 0 ) {
+    if (keys.toString().indexOf(string_xyz) >= 0) {
         window.open(hidden_link, "blank_")
         keys = []
     }

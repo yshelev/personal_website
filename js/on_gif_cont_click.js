@@ -22,6 +22,7 @@ let first_time_played = true
 button_play.addEventListener("click", () => {
     if (first_time_played) {
         first_time_played = false
+        button_play.classList.add("block_hover")
         intro_container.classList.add("anim__cursed")
 
         setTimeout(() => {
@@ -31,6 +32,7 @@ button_play.addEventListener("click", () => {
         setTimeout(() => {
             intro_container.classList.remove("anim__cursed")
             cursed_container.classList.remove("anim__show")
+            cursed_container.classList.remove("block_hover")
             audios.splice(0, 1)
         }, 31500)
     }
