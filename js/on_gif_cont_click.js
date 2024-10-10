@@ -32,20 +32,19 @@ button_play.addEventListener("click", () => {
         setTimeout(() => {
             intro_container.classList.remove("anim__cursed")
             cursed_container.classList.remove("anim__show")
-            cursed_container.classList.remove("block_hover")
+            button_play.classList.remove("block_hover")
             audios.splice(0, 1)
         }, 31500)
     }
-
-
-
-    if (is_playing) {
-        audios[current_audio_index].pause()
-        is_playing = false
-    }
     else {
-        audios[current_audio_index].play()
-        is_playing = true
+        if (is_playing) {
+            audios[current_audio_index].pause()
+            is_playing = false
+        }
+        else {
+            audios[current_audio_index].play()
+            is_playing = true
+        }
     }
 })
 
