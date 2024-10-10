@@ -2,10 +2,8 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-let keys = []
-let string_xyz = "KeyX,KeyY,KeyZ"
-
-let coils_container = document.querySelector(".container_coils")
+let shadowraze_sound = new Audio("../audio/shadowraze_sound.mp3")
+shadowraze_sound.volume = .1
 
 let links = [
     "https://www.youtube.com/watch?v=6FORO4Y4Two",
@@ -16,7 +14,14 @@ let links = [
     "https://youtu.be/ZPcPHLFFsds?si=47-DK1HUVYxgRtAX"
 ]
 
+let hidden_link = "https://mesenev.ru/"
+
+let coils_container = document.querySelector(".container_coils")
+let streak_container = document.querySelector(".container_streak")
+
 const icons = coils_container.getElementsByClassName('coil_icon_container')
+
+let keys = []
 
 let zxc_permutations = [
     "KeyZ,KeyX,KeyC",
@@ -33,12 +38,12 @@ let dict_button_resource = {
     "KeyX": "resources/x.png",
     "KeyC": "resources/c.png"
 }
+
+let string_xyz = "KeyX,KeyY,KeyZ"
 let index_of_current_zxc_string = 0;
 let streak = 0;
 let is_playing_in_minigame = false
 let interval_start = null
-
-let hidden_link = "https://mesenev.ru/"
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -46,6 +51,7 @@ function sleep(ms) {
 
 function endMiniGame() {
     coils_container.classList.remove("on_game_started")
+    streak_container.classList.remove("on_game_started")
     window.open(links[Math.min(streak - 1, zxc_permutations.length - 1)], "blank_")
     is_playing_in_minigame = false
     index_of_current_zxc_string = 0
@@ -55,6 +61,10 @@ function endMiniGame() {
     <img class="coil_icon_container" src=${dict_button_resource[coils[0]]} alt=""/>
     <img class="coil_icon_container" src=${dict_button_resource[coils[1]]} alt=""/>
     <img class="coil_icon_container" src=${dict_button_resource[coils[2]]} alt=""/>`
+
+    streak_container.innerHTML = `
+    current streak: ${streak - 1}
+    `
 }
 
 doc.addEventListener("keydown", (event) => {
@@ -68,12 +78,15 @@ doc.addEventListener("keydown", (event) => {
                 endMiniGame()
             }
         }
+        shadowraze_sound.currentTime = 0
+        shadowraze_sound.play()
 
         sleep(400).then(() => {
             interval_start = Date.now()
             streak += 1
             if (streak === 1) {
                 coils_container.classList.add("on_game_started")
+                streak_container.classList.add("on_game_started")
                 is_playing_in_minigame = true
             }
             index_of_current_zxc_string = getRandomInt(zxc_permutations.length)
@@ -83,8 +96,12 @@ doc.addEventListener("keydown", (event) => {
                 `
                 <img class="coil_icon_container" src=${dict_button_resource[coils[0]]} alt=""/>
                 <img class="coil_icon_container" src=${dict_button_resource[coils[1]]} alt=""/>
-                <img class="coil_icon_container" src=${dict_button_resource[coils[2]]} alt=""/>
+                <img class="coil_icon_container" src=${dict_button_resource[coils[2]]} alt=""/> 
                 `
+
+            streak_container.innerHTML = `
+                current streak: ${streak - 1}
+            `
             keys = []
         })
 

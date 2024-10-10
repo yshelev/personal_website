@@ -303,3 +303,15 @@ a {
     color: snow;
     font-family: "Microsoft JhengHei", serif;
 }
+
+.container_streak {
+    font-family: "Microsoft JhengHei", serif;
+    font-size: 20px;
+    color: darkorange;
+    opacity: 0;
+}
+
+.container_streak.on_game_started {
+    animation: show__cursed 2s ease-in-out;
+    opacity: 1;
+}
