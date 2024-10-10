@@ -52,7 +52,6 @@ a {
     height: fit-content;
     width: 12em;
     filter: invert(100%);
-    /*opacity: 0;*/
 }
 
 .black_icons_container {
@@ -183,6 +182,7 @@ a {
 }
 
 .coil_icon_container.clicked_animation {
+    opacity: 0;
     animation: fadeout__intro .2s ease-in-out;
 }
 
