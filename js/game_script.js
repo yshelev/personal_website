@@ -78,9 +78,10 @@ doc.addEventListener("keydown", (event) => {
                 endMiniGame()
             }
         }
-        shadowraze_sound.currentTime = 0
-        shadowraze_sound.play()
-
+        if (is_playing_in_minigame) {
+            shadowraze_sound.currentTime = 0
+            shadowraze_sound.play()
+        }
         sleep(400).then(() => {
             interval_start = Date.now()
             streak += 1
